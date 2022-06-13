@@ -3,12 +3,14 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
-import pages.Ayse_Page;
+
+import pages.TC10_Page;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class TC10 {
-    Ayse_Page ayse_page=new Ayse_Page();
+ //   Ayse_Page ayse_page=new Ayse_Page();
+    TC10_Page tc10_page=new TC10_Page();
     Actions actions=new Actions(Driver.getDriver());
     //Faker faker=new Faker();
 
@@ -37,7 +39,7 @@ public class TC10 {
 
     @Given("Scroll down to footer")
     public void scroll_down_to_footer() {
-        Driver.waitAndClick(ayse_page.subscription);
+        Driver.waitAndClick(tc10_page.subscription);
 
     }
     @Given("Verify text {string}")
