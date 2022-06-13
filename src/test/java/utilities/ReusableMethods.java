@@ -134,4 +134,9 @@ public class ReusableMethods {
         });
         return element;
     }
+    public static void hooverByJS(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        jse.executeScript("arguments[0].scrollIntoView()", element);
+        jse.executeScript("arguments[0].click();", element);
+    }
 }

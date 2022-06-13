@@ -20,5 +20,7 @@ public class TC10_Page {
     @FindBy (xpath = "//i[@class='fa fa-arrow-circle-o-right']")
     public WebElement subscriptionOk;
 
+    @FindBy (xpath = "//div[@class='alert-success alert']")
+    public WebElement alert;
 
 }
