@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
@@ -73,5 +74,6 @@ public class TC10 {
             Assert.assertTrue(tc10_page.alert.isDisplayed());
         System.out.println("Alert yazi elementi:"+ tc10_page.alert.getText());
     }
+
 
 }
