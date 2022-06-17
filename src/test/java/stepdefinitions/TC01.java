@@ -3,11 +3,15 @@ package stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import pages.HF_RegisterPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class TC01 {
+    HF_RegisterPage hf = new HF_RegisterPage();
+
     @Given("HF Launch browser")
     public void hfLaunchBrowser() {
         Driver.getDriver();
@@ -28,7 +32,8 @@ public class TC01 {
     }
 
     @And("HF Click on {string} button")
-    public void hfClickOnSignupLoginButton() {
+    public void hfClickOnSignupLoginButton(String arg0) {
+        hf.signupLogin.click();
     }
 
     @And("HF Verify {string} is visible")
@@ -66,4 +71,6 @@ public class TC01 {
     @Then("HF Verify that {string} is visible and click {string} button")
     public void hfVerifyThatACCOUNTDELETEDIsVisibleAndClickContinueButton() {
     }
+
+
 }
