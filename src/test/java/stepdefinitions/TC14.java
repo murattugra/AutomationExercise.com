@@ -1,8 +1,10 @@
 package stepdefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.Select;
 import pages.Tc14Page;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -11,6 +13,7 @@ import utilities.ReusableMethods;
 public class TC14 {
 
     Tc14Page tc14Page = new Tc14Page();
+    Faker faker;
 
 
     @Given("Launch browser")
@@ -73,6 +76,68 @@ public class TC14 {
 
     @And("Fill all details in Signup and create account")
     public void fillAllDetailsInSignupAndCreateAccount() {
+    faker=new Faker();
+//New User Signup!
+    tc14Page.newUserName.sendKeys(faker.name().firstName());
+String email = faker.internet().emailAddress(); // gonderecegim email adresini ilerde kullanacagim icin string olarak sakliyoruz.
+    tc14Page.newUserEmailAddress.sendKeys(email);
+    tc14Page.newUserSignupButton.click(); // click yerine submit methodu da kullanilabilir, jsClick ve actions class ile de yapilabilir.
+
+
+//ENTER ACCOUNT INFORMATION
+        // Mr. veya Mrs. secenegini rastgele sectirdik.
+    boolean secenek = faker.random().nextBoolean(); // true veya false donecek, 2 ihtimal var sadece.
+    if(secenek){tc14Page.mr.click();}else{tc14Page.mrs.click();}
+
+String password = faker.internet().password(); // gonderecegim sifreyi ilerde kullanacagim icin string olarak sakliyoruz.
+    tc14Page.AccountPassword.sendKeys(password);
+
+
+// dogum tarihi seciminde dropdown kullanilacagi icin select objesi olusturacagiz.
+
+        //gun
+        Select select = new Select(tc14Page.DropDownDay);
+String randomGun = ""+faker.random().nextInt(1,31); // rastgele 1 ile 31 arasinda String sayi uretecek.
+        select.selectByValue(randomGun);
+
+        //ay
+        select = new Select(tc14Page.DropDownMonth);
+String randomAy= ""+faker.random().nextInt(1,12);
+        select.selectByValue(randomAy);
+
+        //yil
+        select = new Select(tc14Page.DropDownYear);
+String randomYil = ""+faker.random().nextInt(1960,2003);
+        select.selectByValue(randomYil);
+
+
+
+// ADDRESS INFORMATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @And("Verify {string} and click {string} button")

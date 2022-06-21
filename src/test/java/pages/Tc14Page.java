@@ -38,18 +38,52 @@ public class Tc14Page {
 
 
 
+    @FindBy(xpath="//input[@placeholder='Name']")
+    public WebElement newUserName;
+    @FindBy(xpath="//input[@data-qa='signup-email']")
+    public WebElement newUserEmailAddress;
+    @FindBy(xpath="//button[normalize-space()='Signup']")
+    public WebElement newUserSignupButton;
+
+//ENTER ACCOUNT INFORMATION
+    @FindBy(xpath="//input[@id='id_gender1']")
+    public WebElement mr;
+    @FindBy(xpath="//input[@id='id_gender2']")
+    public WebElement mrs;
+    @FindBy(xpath="//input[@id='name']")
+    public WebElement AccountName;
+    @FindBy(xpath="//input[@id='email']")
+    public WebElement AccountEmail;
+    @FindBy(xpath="//input[@id='password']")
+    public WebElement AccountPassword;
+
+    @FindBy(xpath="//select[@id='days']")
+    public WebElement DropDownDay;
+    @FindBy(xpath="//select[@id='months']")
+    public WebElement DropDownMonth;
+    @FindBy(xpath="//select[@id='years']")
+    public WebElement DropDownYear;
+
+    @FindBy(xpath="//input[@id='newsletter']")
+    public WebElement signUpForOurNewsletter;
+    @FindBy(xpath="//input[@id='optin']")
+    public WebElement receiveSpecialOffersFromOu;
 
 
 
-
+//ADDRESS INFORMATION
     @FindBy(xpath="//input[@id='first_name']")
     public WebElement firstName;
     @FindBy(xpath="//input[@id='last_name']")
     public WebElement lastName;
     @FindBy(xpath="//input[@id='company']")
     public WebElement company;
+    @FindBy(xpath="//input[@id='address1']")
+    public WebElement address;
     @FindBy(xpath="//input[@id='address2']")
     public WebElement address2;
+    @FindBy(xpath="//select[@id='country']")
+    public WebElement countryDropDown;
     @FindBy(xpath="//input[@id='state']")
     public WebElement state;
     @FindBy(xpath="//input[@id='city']")
@@ -59,7 +93,8 @@ public class Tc14Page {
     @FindBy(xpath="//input[@id='mobile_number']")
     public WebElement mobileNumber;
     @FindBy(xpath="//button[normalize-space()='Create Account']")
-    public WebElement createAccount;
+    public WebElement createAccountButton;
+
 
 
 
