@@ -96,9 +96,34 @@ public class Tc14Page {
     public WebElement createAccountButton;
 
 
+// Account Created
+
+    @FindBy(xpath="//b[normalize-space()='Account Created!']")
+    public WebElement accountCreated;
+
+    @FindBy(xpath="//a[normalize-space()='Continue']")
+    public WebElement continueButton;
+
+    @FindBy(xpath="//h4[@class='text-center']")
+    public WebElement deleteAccountText;
+
+    @FindBy(xpath="//li[10]//a[1]")
+    public WebElement loggedInAsText;
+
+    @FindBy(xpath="//ul[@id='address_delivery']//li[4]")
+    public WebElement adressProcessToCheckOut;
+
+    @FindBy(xpath="//ul[@id='address_delivery']//li[@class='address_city address_state_name address_postcode']")
+    public WebElement cityStateZipCode;
+
+    @FindBy(xpath="//ul[@id='address_delivery']//li[@class='address_country_name']")
+    public WebElement countryProcessToCheckOut;
+
+    @FindBy(xpath="//ul[@id='address_delivery']//li[@class='address_phone']")
+    public WebElement mobileNumberProcessToCheckOut;
 
 
-   
+
 
 
 

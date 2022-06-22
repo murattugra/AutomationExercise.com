@@ -1,4 +1,4 @@
-Feature: TC14
+Feature: TC14 Uzun Versiyon
 
   Scenario:
 
@@ -8,11 +8,11 @@ Feature: TC14
           And   Add products to cart
           And   Click 'Cart' button
           And   Verify that cart page is displayed
-          And   Click Proceed To Checkout
+          And   Click 'Proceed To Checkout' button
           And   Click 'Register / Login' button
           And   Fill all details in Signup and create account
           And   Verify 'ACCOUNT CREATED!' and click 'Continue' button
-          And   Verify ' Logged in as username' at top
+          And   Verify 'Logged in as username' at top
           And   Click 'Cart' button
           And   Click 'Proceed To Checkout' button
           And   Verify Address Details and Review Your Order
