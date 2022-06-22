@@ -63,8 +63,10 @@ public class TC14 {
 
         }else if(button.contains("Pay") && button.contains("Confirm")){
 
-        }else if(button.contains("Delete Account")){
+            tc14Page.payAndConfirmOrder.submit();
 
+        }else if(button.contains("Delete Account")){
+            tc14Page.deleteAccount.click();
         }
         //23.satir
         //9.satir
@@ -223,31 +225,38 @@ Assert.assertEquals(expectedMobileNumber,actualMobileNumber);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @And("Enter description in comment text area and click {string}")
-    public void enterDescriptionInCommentTextAreaAndClickPlaceOrder() {
+    public void enterDescriptionInCommentTextAreaAndClickPlaceOrder(String str) {
+        tc14Page.checkoutMessageBox.sendKeys("Siparis aciklamasi");
+        Driver.clickWithJS(tc14Page.placeOrderButton);
     }
 
     @And("Enter payment details: Name on Card, Card Number, CVC, Expiration date")
     public void enterPaymentDetailsNameOnCardCardNumberCVCExpirationDate() {
+
+String nameOnCard=firstName;
+        tc14Page.nameOnCard.sendKeys(nameOnCard);
+String creditrCardNumber=faker.business().creditCardNumber();
+        tc14Page.cardNumber.sendKeys(creditrCardNumber);
+        tc14Page.cvv.sendKeys("321");
+        tc14Page.cardExpirationMM.sendKeys("05");
+        tc14Page.cardExpirationYY.sendKeys("2025");
+
+
+
+
+
     }
 
     @And("Verify success message {string}")
-    public void verifySuccessMessageYourOrderHasBeenPlacedSuccessfully() {
+    public void verifySuccessMessageYourOrderHasBeenPlacedSuccessfully(String str) {
+
+String expectedText = "Congratulations! Your order has been confirmed!";
+String actualText = tc14Page.siparisOnayYazisi.getText();
+        Assert.assertEquals(expectedText,actualText);
+
+
     }
 }

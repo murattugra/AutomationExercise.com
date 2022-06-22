@@ -35,6 +35,11 @@ public class Tc14Page {
     @FindBy(xpath = "//u[normalize-space()='Register / Login']")
     public WebElement registerLoginButton;
 
+    @FindBy(xpath="//a[normalize-space()='Delete Account']")
+    public WebElement deleteAccount;
+
+    @FindBy(xpath="//button[normalize-space()='Delete']")
+    public WebElement deleteButton;
 
 
 
@@ -122,9 +127,30 @@ public class Tc14Page {
     @FindBy(xpath="//ul[@id='address_delivery']//li[@class='address_phone']")
     public WebElement mobileNumberProcessToCheckOut;
 
+    @FindBy(xpath="//textarea[@name='message']")
+    public WebElement checkoutMessageBox;
 
+    @FindBy(xpath="//a[normalize-space()='Place Order']")
+    public WebElement placeOrderButton;
 
+// payment
 
+    @FindBy(xpath="//input[@name='name_on_card']")
+    public WebElement nameOnCard;
+    @FindBy(xpath="//input[@name='card_number']")
+    public WebElement cardNumber;
+    @FindBy(xpath="//input[@placeholder='ex. 311']")
+    public WebElement cvv;
+    @FindBy(xpath="//input[@placeholder='MM']")
+    public WebElement cardExpirationMM;
+    @FindBy(xpath="//input[@placeholder='YYYY']")
+    public WebElement cardExpirationYY;
+    @FindBy(xpath="//button[@id='submit']")
+    public WebElement payAndConfirmOrder;
+
+//order placed
+    @FindBy(xpath="//p[normalize-space()='Congratulations! Your order has been confirmed!']")
+    public WebElement siparisOnayYazisi;
 
 
 
