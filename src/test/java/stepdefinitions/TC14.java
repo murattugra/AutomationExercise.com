@@ -4,17 +4,23 @@ import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 import pages.Tc14Page;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TC14 {
 
     Tc14Page tc14Page = new Tc14Page();
     Faker faker;
     String firstName;
+    String lastName;
     String adress;
     String state;
     String city;
@@ -62,15 +68,13 @@ public class TC14 {
             tc14Page.proceedToCheckOutButton.click();
 
         }else if(button.contains("Pay") && button.contains("Confirm")){
+            tc14Page.payAndConfirmOrderButton.click();
 
         }else if(button.contains("Delete Account")){
 
+
         }
-        //23.satir
-        //9.satir
-        //12.satir
-        //17.satir
-        //21.satir
+
     }
 
     @And("Verify that cart page is displayed")
@@ -131,7 +135,7 @@ String randomYil = ""+faker.random().nextInt(1960,2003);
 String firstName = faker.name().firstName();
         tc14Page.firstName.sendKeys(firstName);
 
-String lastName = faker.name().lastName();
+lastName = faker.name().lastName();
         tc14Page.lastName.sendKeys(lastName);
 
 String company = faker.company().name();
@@ -222,32 +226,56 @@ String actualMobileNumber=tc14Page.mobileNumberProcessToCheckOut.getText();
 Assert.assertEquals(expectedMobileNumber,actualMobileNumber);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @And("Enter description in comment text area and click {string}")
-    public void enterDescriptionInCommentTextAreaAndClickPlaceOrder() {
+    public void enterDescriptionInCommentTextAreaAndClickPlaceOrder(String str) {
+
+        Driver.scrollIntoViewWithJS(tc14Page.placeOrderMessageBox); /** javascriptexecutor ile webelementi gorene kadar sayfayi asagiya indirecek. */
+        Driver.wait(3);
+        tc14Page.placeOrderMessageBox.sendKeys("siparis mesaji......");
+        tc14Page.placeOrderButton.click();
+
     }
 
     @And("Enter payment details: Name on Card, Card Number, CVC, Expiration date")
     public void enterPaymentDetailsNameOnCardCardNumberCVCExpirationDate() {
+// name on card
+        tc14Page.nameOnCard.sendKeys(firstName+" "+lastName);
+
+//card number
+String cardNumber=faker.business().creditCardNumber(); // xxxx xxxx xxxx xxxx
+        tc14Page.cardNumber.sendKeys(cardNumber);
+
+//cvc number
+        // iki ihtimal var 1. 3 basamakli sifir ile baslamayan nextBoolean, 2. 3 basamakli ama sifir ile baslayan nextBoolean olabilir. 256  085 gibi
+
+        boolean nextBoolean = faker.random().nextBoolean(); // ilk basta iki secenekten birini sectirelim, yazi tura attik.
+
+        if(nextBoolean){
+            tc14Page.cvcNumber.sendKeys(""+faker.random().nextInt(100,999)); // orn. 365
+        }else{
+            tc14Page.cvcNumber.sendKeys("0"+faker.random().nextInt(10,99)); // orn. 057
+        }
+
+// expiration date
+//MM
+        tc14Page.expirationMM.sendKeys("05");
+
+//YYYY
+        int date = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1; // mevcut yilin 1 fazlasini integer olarak verecek.
+        tc14Page.expirationYY.sendKeys(""+date);
+
+
     }
 
     @And("Verify success message {string}")
-    public void verifySuccessMessageYourOrderHasBeenPlacedSuccessfully() {
+    public void verifySuccessMessageYourOrderHasBeenPlacedSuccessfully(String str) {
+
+        String expectedText = str;
+        String actualText=tc14Page.yourOrderHasBeenPlacedSuc.getText();
+
+        Assert.assertEquals(expectedText,actualText);
+
     }
 }

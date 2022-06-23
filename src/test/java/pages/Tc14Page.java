@@ -124,8 +124,32 @@ public class Tc14Page {
 
 
 
+// placeOrder
+    @FindBy(xpath="//textarea[@name='message']")
+    public WebElement placeOrderMessageBox;
+
+    @FindBy(xpath="//a[normalize-space()='Place Order']")
+    public WebElement placeOrderButton;
 
 
+
+// payment
+
+    @FindBy(xpath="//input[@name='name_on_card']")
+    public WebElement nameOnCard;
+    @FindBy(xpath="//input[@name='card_number']")
+    public WebElement cardNumber;
+    @FindBy(xpath="//input[@placeholder='ex. 311']")
+    public WebElement cvcNumber;
+    @FindBy(xpath="//input[@placeholder='MM']")
+    public WebElement expirationMM;
+    @FindBy(xpath="//input[@placeholder='YYYY']")
+    public WebElement expirationYY;
+    @FindBy(xpath="//button[@id='submit']")
+    public WebElement payAndConfirmOrderButton;
+
+    @FindBy(xpath="//div[contains(text(),'Your order has been placed successfully!')]")
+    public WebElement yourOrderHasBeenPlacedSuc;
 
 
 
