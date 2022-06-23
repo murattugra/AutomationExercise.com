@@ -224,7 +224,6 @@ String actualMobileNumber=tc14Page.mobileNumberProcessToCheckOut.getText();
 Assert.assertEquals(expectedMobileNumber,actualMobileNumber);
 
 
-
     }
 
     @And("Enter description in comment text area and click {string}")
