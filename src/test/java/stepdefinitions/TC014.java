@@ -5,7 +5,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.TC014page;
 import pages.Tc14Page;
@@ -167,16 +169,30 @@ public class TC014 {
     @And("ed  Verify success message Your order has been placed successfully!")
     public void edVerifySuccessMessageYourOrderHasBeenPlacedSuccessfully() {
 
+    String expectedText = "Congratulations! Your order has been confirmed!";
+    String actualText = tc014Page.orderPlaceText.getText(); // Congratulations! Your order has been confirmed!
 
-        Assert.assertTrue(tc014Page.pleaseOrdertButton.isDisplayed());
-
+        Assert.assertEquals(expectedText,actualText);
     }
 
     @And("ed  Click Delete Account button")
     public void edClickDeleteAccountButton() {
+        tc14Page.deleteAccountButton.click();
+
     }
 
     @Then("ed  Verify ACCOUNT DELETED! and click Continue button")
     public void edVerifyACCOUNTDELETEDAndClickContinueButton() {
+        String expectedText ="ACCOUNT DELETED!";
+        String actualText =tc14Page.deleteAccountText.getText();
+        Assert.assertEquals(expectedText,actualText);
+        tc14Page.continueButton.click();
+    }
+
+    @And("ed  Click Signup Login button")
+    public void edClickSignupLoginButton() {
+
+            tc014Page.signupLoginButton.click();
+
     }
 }

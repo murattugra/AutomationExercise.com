@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.Select;
 import pages.Tc14Page;
 import utilities.ConfigReader;
@@ -72,7 +73,10 @@ public class TC14 {
 
         }else if(button.contains("Delete Account")){
 
+            tc14Page.deleteAccountButton.click();
 
+        }else if(button.contains("Login")&&button.contains("Signup")){
+            tc14Page.signupLoginButton.click();
         }
 
     }
@@ -200,6 +204,11 @@ String actualtext = tc14Page.loggedInAsText.getText(); // Logged in as {username
 
         Assert.assertEquals(expectedText,actualtext);
 
+
+       // Assert.assertTrue(tc14Page.loggedInAsText.getText().contains("Logged in as")); //
+
+
+
     }
 
     @And("Verify Address Details and Review Your Order")
@@ -232,7 +241,6 @@ Assert.assertEquals(expectedMobileNumber,actualMobileNumber);
     public void enterDescriptionInCommentTextAreaAndClickPlaceOrder(String str) {
 
         Driver.scrollIntoViewWithJS(tc14Page.placeOrderMessageBox); /** javascriptexecutor ile webelementi gorene kadar sayfayi asagiya indirecek. */
-        Driver.wait(3);
         tc14Page.placeOrderMessageBox.sendKeys("siparis mesaji......");
         tc14Page.placeOrderButton.click();
 
@@ -260,7 +268,8 @@ String cardNumber=faker.business().creditCardNumber(); // xxxx xxxx xxxx xxxx
 
 // expiration date
 //MM
-        tc14Page.expirationMM.sendKeys("05");
+        String ay = new SimpleDateFormat("MM").format(new Date()); // mevcut ay girecek
+        tc14Page.expirationMM.sendKeys(ay);
 
 //YYYY
         int date = Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1; // mevcut yilin 1 fazlasini integer olarak verecek.
@@ -271,11 +280,19 @@ String cardNumber=faker.business().creditCardNumber(); // xxxx xxxx xxxx xxxx
 
     @And("Verify success message {string}")
     public void verifySuccessMessageYourOrderHasBeenPlacedSuccessfully(String str) {
-
+        String actualText=null;
         String expectedText = str;
-        String actualText=tc14Page.yourOrderHasBeenPlacedSuc.getText();
+//
+        try {
+            actualText=tc14Page.yourOrderHasBeenPlacedSuc.getText();
+            Assert.assertEquals(expectedText, actualText);
 
-        Assert.assertEquals(expectedText,actualText);
+        } catch (NoSuchElementException e) {
+            expectedText="Congratulations! Your order has been confirmed!";
+            actualText=tc14Page.orderSuccessMessage.getText();
+            Assert.assertEquals(expectedText, actualText);
+
+        }
 
 
 
