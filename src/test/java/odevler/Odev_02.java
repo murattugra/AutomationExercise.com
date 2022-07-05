@@ -18,7 +18,7 @@ public class Odev_02 {
          *
          * 		   Input : cay sayisi : 10 seker sayisi :0
          *        Output : Cok guzel sifir seker saglikli yasam
-         *
+         * Matematiksel islemler
          */
 
 

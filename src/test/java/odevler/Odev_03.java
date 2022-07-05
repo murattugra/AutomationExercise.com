@@ -10,7 +10,7 @@ public class Odev_03 {
          *
          * Ornek : Inputs : sayilar : 18 , 10  islem : 3
          *         Output : 18 X 10 = 180
-         *
+         * Switch Case ve/veya IfElse ve Matematiksel islemler, int, double ...
          */
 
 
