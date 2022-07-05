@@ -35,6 +35,12 @@ public class Tc14Page {
     @FindBy(xpath = "//u[normalize-space()='Register / Login']")
     public WebElement registerLoginButton;
 
+    @FindBy(xpath="//a[normalize-space()='Signup / Login']")
+    public WebElement signupLoginButton;
+
+    @FindBy(xpath="//a[normalize-space()='Delete Account']")
+    public WebElement deleteAccountButton;
+
 
 
 
@@ -151,6 +157,8 @@ public class Tc14Page {
     @FindBy(xpath="//div[contains(text(),'Your order has been placed successfully!')]")
     public WebElement yourOrderHasBeenPlacedSuc;
 
+    @FindBy(xpath="//p[normalize-space()='Congratulations! Your order has been confirmed!']")
+    public WebElement orderSuccessMessage;
 
 
 }

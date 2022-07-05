@@ -1,7 +1,5 @@
 Feature:
 
-
-
   Scenario:
 
     Given Launch browser
