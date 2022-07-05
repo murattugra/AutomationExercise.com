@@ -87,6 +87,11 @@ public class TC014page {
     @FindBy(xpath=" //b[normalize-space()='Order Placed!']")
     public WebElement pleaseOrdertButton;
 
+    @FindBy(xpath = "//p[text()='Congratulations! Your order has been confirmed!']")
+    public WebElement orderPlaceText;
+
+    @FindBy(xpath="//a[normalize-space()='Signup / Login']")
+    public WebElement signupLoginButton;
 
 
 
